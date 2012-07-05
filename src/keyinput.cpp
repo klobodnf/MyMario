@@ -108,6 +108,8 @@ void keyInput(void)
 		strcpy(cheatcode,"s");		
 		keys[SDLK_s] = 0;
 	}
+
+	// 先输入s再输入l可以实现超级跳
 	if(keys[SDLK_l])
 	{
 	if(cheats_enabled)
@@ -119,6 +121,8 @@ void keyInput(void)
 		PLAYSOUND0(S_PAUSE);
 		showTip("  Game Paused"," "," ","   The journey goes on"," "," "," ");
 	}
+
+	// 如果同时输入5和1、MARIO会飞
 	if(cheats_enabled)
 	if(keys[SDLK_5]&&keys[SDLK_1])
 	{

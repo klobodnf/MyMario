@@ -199,7 +199,7 @@ void setGame()
 
 	cheatcode = new char[10];
 	
-	font = TTF_OpenFont (DATADIR "msyhbd.ttf",20);
+	font = TTF_OpenFont (DATADIR "style.TTF",26);
 	TTF_SetFontStyle (font, 0) ;
 	
 	initMusic();
