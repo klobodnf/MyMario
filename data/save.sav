@@ -1,0 +1,8 @@
+#This is a savegame for Mega Mario Bros.
+#Just try to modify any value!
+
+LEVEL Yeah,that's_right.Looks_easy. data/levels/5/main 0 Rockin' Home.
+SCORE 23830 71490
+COINS 89 2937
+LIFE 7 2331
+STAT 0 123456789

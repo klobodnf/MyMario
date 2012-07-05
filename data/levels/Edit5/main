@@ -1,0 +1,60 @@
+# Level for Mega Mario
+
+TEXTURE data/gfx/tiles/ground/stone0.png
+TEXTURE data/gfx/tiles/ground/stone1.png
+TEXTURE data/gfx/tiles/ground/stone2.png
+TEXTURE data/gfx/tiles/ground/stone3.png
+TEXTURE data/gfx/tiles/ground/stone4.png
+TEXTURE data/gfx/tiles/ground/stone5.png
+TEXTURE data/gfx/tiles/ground/stone6.png
+TEXTURE data/gfx/tiles/ground/bricks.png
+TEXTURE data/gfx/tiles/ground/bricks2.png
+TEXTURE data/gfx/tiles/ground/snowy.png
+TEXTURE data/gfx/tiles/ground/grass.png
+TEXTURE data/gfx/tiles/ground/sand.png
+TEXTURE data/gfx/tiles/ground/metal.png
+TEXTURE data/gfx/tiles/cannonset1.png
+TEXTURE data/gfx/tiles/cannonset2.png
+TEXTURE data/gfx/tiles/pipes/up/1.png
+TEXTURE data/gfx/tiles/pipes/up/2.png
+TEXTURE data/gfx/tiles/pipes/up/3.png
+TEXTURE data/gfx/tiles/pipes/up/4.png
+TEXTURE data/gfx/tiles/pipes/down/1.png
+TEXTURE data/gfx/tiles/pipes/down/2.png
+TEXTURE data/gfx/tiles/pipes/down/3.png
+TEXTURE data/gfx/tiles/pipes/down/4.png
+TEXTURE data/gfx/tiles/pipes/right/1.png
+TEXTURE data/gfx/tiles/pipes/right/2.png
+TEXTURE data/gfx/tiles/pipes/right/3.png
+TEXTURE data/gfx/tiles/pipes/right/4.png
+TEXTURE data/gfx/tiles/pipes/left/1.png
+TEXTURE data/gfx/tiles/pipes/left/2.png
+TEXTURE data/gfx/tiles/pipes/left/3.png
+TEXTURE data/gfx/tiles/pipes/left/4.png
+TEXTURE data/gfx/tiles/conveyorL.png
+TEXTURE data/gfx/tiles/conveyorR.png
+::TILES-> BEGIN
+
+::TILES-> END
+::BONUS-> BEGIN
+::BONUS-> END
+::COIN-> BEGIN
+::COIN-> END
+
+START 0 299 3880 0
+START 1 0 0 0
+EXIT 1 0 0 NONE 0 0
+START 2 0 0 0
+EXIT 2 0 0 NONE 0 0
+START 3 0 0 0
+EXIT 3 0 0 NONE 0 0
+START 4 0 0 0
+EXIT 4 0 0 NONE 0 0
+BGCOLOR 2000030
+
+
+#If you want Background music:
+#MUSIC megamusic.mid
+#if you want a big static background:
+#BACKGROUND data/gfx/background/VH.jpg
+

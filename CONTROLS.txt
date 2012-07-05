@@ -1,0 +1,15 @@
+Controls : 
+
+H or F1 = Help
+
+Arrow Keys = Movement
+Space      = Jump
+Left Ctrl  = Run faster / shoot
+
+P = Pause
+F12 = Screenshot
+
+Or use the gamepad (Only in-Game)!
+
+
+The game save automatically , after each castle.

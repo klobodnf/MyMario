@@ -1,0 +1,29 @@
+1.35
+- Higher Resolution in Editor
+- First Level fixed
+- Turtle shells kick stones!!!
+
+1.3linux
+- linux support
+- fire fixed!
+
+1.3
+- Full Levellist is created correctly after completing game
+- new Statusbar
+- Cheats only available after completing the game
+
+Music Archive programmed :
+- no more stopping when loading a song
+- fixed music bug: an old song sometimes never stopped
+
+1.25
+
+-Mario dying bug when blinking
+-Some graphics improved
+-Crash down at exiting right level border removed
+-Bonus Collission detection improved
+-Some Level bugs fixed
+
+
+
+[Archived]

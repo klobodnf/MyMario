@@ -1,0 +1,40 @@
+How to create a level with Mega Mario Editor
+
+
+1. Start Editor.exe
+2. Load Level - Enter "edit1/main"  (or "edit2/main" up to "edit5/main")
+3. Build your level. To paint textures press "Paint Tiles" (Top)
+
+To scroll activate the editor Window (onthe right side) and press the middle mouse button and move.
+Alternative: Use Arrow Key to scroll .
+
+4. Press "Starts and Exits" and set starting and exiting poins
+   (Exits with a new levelfile to load - e.g. "edit4/main"
+5. Save
+6. Start Mario.exe and select Levellist and choose your level!
+
+
+Advanced Settings :
+You want to change Music and Background ?
+
+Open a level with Text Editor :
+eg. "data\levels\3\main"
+
+Scroll down..... you see this (similar) :
+
+BGCOLOR 2000030
+
+#If you want Background music:
+MUSIC megamusic.mid
+
+#if you want a big static background:
+BACKGROUND data/gfx/background/VH.jpg
+
+
+There you can change the attributes ( see "data/variables.PNG" )
+
+
+(See editor_FAQ.PNG)
+
+Hope it works and send me your levels :  coby200@hotmail.com
+

@@ -1,0 +1,18 @@
+By the help of Hans de Goede a linux compatible version of Mega Mario was created.
+To play under linux you have to run the makefile located in the Megamario directory, just type :
+
+> make PREFIX=/usr/local
+> make PREFIX=/usr/local install
+
+
+The libraries 
+
+SDL 
+SDL_image 
+SDL_mixer 
+SDL_ttf 
+
+need to be installed!!!
+
+It would be nice to have some feedback (forum, mail etc).
+If there are problems, you also could contact hans for support <j.w.r.degoede@hhs.nl>

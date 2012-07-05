@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MARIO", "MARIO.vcproj", "{FC29E006-902A-42DC-A67C-3115B7AC416D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test_game", "..\test_game\test_game.vcproj", "{E24973CF-2806-454C-B091-CA6AECD8CDD5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FC29E006-902A-42DC-A67C-3115B7AC416D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{FC29E006-902A-42DC-A67C-3115B7AC416D}.Debug|Win32.Build.0 = Debug|Win32
+		{FC29E006-902A-42DC-A67C-3115B7AC416D}.Release|Win32.ActiveCfg = Release|Win32
+		{FC29E006-902A-42DC-A67C-3115B7AC416D}.Release|Win32.Build.0 = Release|Win32
+		{E24973CF-2806-454C-B091-CA6AECD8CDD5}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E24973CF-2806-454C-B091-CA6AECD8CDD5}.Debug|Win32.Build.0 = Debug|Win32
+		{E24973CF-2806-454C-B091-CA6AECD8CDD5}.Release|Win32.ActiveCfg = Release|Win32
+		{E24973CF-2806-454C-B091-CA6AECD8CDD5}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

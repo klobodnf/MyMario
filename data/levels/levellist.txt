@@ -1,0 +1,24 @@
+data/levels/old/lab/main
+!- The extreme MarioTestLab - Massacre -!
+data/levels/menulevel2
+ !- The funky death Jump -!
+data/levels/old/2/main
+!- The first level of the original SMB -!
+data/levels/old/1/main
+#- Nonsense -#
+data/levels/edit1/main
+Empty Level 1 - Ready for edit
+data/levels/edit2/main
+Empty Level 3 - Ready for edit
+data/levels/edit3/main
+Empty Level 4 - Ready for edit
+data/levels/edit4/main
+Empty Level 4 - Ready for edit
+data/levels/edit5/main
+Empty Level 5 - Ready for edit
+data/levels/old/1/main
+ -
+data/levels/old/1/main
+All the Levels will be availabe 
+data/levels/old/1/main
+here after you complete the game.
