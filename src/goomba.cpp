@@ -33,18 +33,25 @@ void cGoomba::add_update()
 			PLAYER->changeStat(0);
 	
 }
+
+// 蘑菇头被MARIO残忍的践踏了、囧
 void cGoomba::headbang()
 {
 	DEATHcount ++;
+	// 踩中蘑菇头后MARIO会向上弹起
 	PLAYER->y_speed=-10;
 	PLAYSOUND1(S_STOMP); 
+	// 然后加分
 	SCORE->init(x,y,scoring);
+	// 然后蘑菇头会被踩出血来、囧
 	BLOOD_GENERATOR->newBlood(x,y);
 }
 void cGoomba::draw()
 {
 	if(DEATHcount)
+		// 如果蘑菇头被MARIO践踏后、就会画一幅被踩扁的图画
 		SDL_UpperBlit(GOOMBA_SURFACE[2],0,screen,&rect);
 	else 
+		// 否则、播放正常走路的动作
 		SDL_UpperBlit(GOOMBA_SURFACE[walkcount],0,screen,&rect);
 }

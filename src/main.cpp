@@ -18,12 +18,20 @@ bool running;
    performance counter on windows, this is rather non portable, we could
    create equivalent functionality in a cpu portable way under unix using
    gettimeofday, but currently thats rather low priority */
+// 这里判断的是如果非UNIX系系统、则执行
 #ifndef __unix__   
+// QueryPerformanceFrequency()的频率
+// 每秒获取多少CPU Performance Tick
+// 必须要查询系统以得到QueryPerformanceCounter()返回的嘀哒声的频率才能计算出最小单位为多少每秒
 LARGE_INTEGER tickspersecond;
+// 过一段时间后再次调用QueryPerformanceCounter()结束的时间、获取系统的最小单位时间
 LARGE_INTEGER currentticks;
+// 第一次调用QueryPerformanceCounter()开始的时间、获取系统的最小单位时间
 LARGE_INTEGER framedelay;
+
 int fps,framecount = 5;
-char* FRAMECHAR = new char[1];
+// char* FRAMECHAR = new char[1];
+char* FRAMECHAR = NULL;
 #endif
 int targetfps=60;
 
@@ -38,15 +46,24 @@ int APIENTRY WinMain(HINSTANCE hInstance,
                      LPSTR     lpCmdLine,
                      int       nCmdShow )
 {
+	// 第一次取出开始时间的值
 	QueryPerformanceCounter(&framedelay);
+	// 获取CPU的频率值
 	QueryPerformanceFrequency(&tickspersecond); 
 		// OPTIONS LOAD :
 	GetModuleFileName (NULL, szIniFile, sizeof (szIniFile)) ;
     strcpy (strrchr (szIniFile, '.') + 1, "ini") ;
+	// 从指定ini文件中读取字段所对应的整数值、并返回相应的整数值、如果未发现、
+	// 则返回函数中的指定值
+
+	// 函数原型GetPrivateProfileInt(字段名, 属性名, 指定返回属性值, 文件名)
+	// 在这里字段名为mario、属性名为showFPS, 指定返回值为0, 文件名为mario.ini
+	// 这里如果mario.ini文件中没有写上showFPS的话、这里就直接返回0
 	if(GetPrivateProfileInt(szAppName, "showFPS",0, szIniFile))
 		NoFrameCheck = 1;
 		
-	NoFrameCheck = 1;
+	// 这里可能是调试用、其实是多余的、否则前面的判断语句就没用了
+	// NoFrameCheck = 1;
 
 #else  /* defined __unix__ */
 
@@ -214,6 +231,8 @@ void setGame()
 void gameEvent()
 {
 
+	// 这里会不断从事件列表中获取事件信息、直到没有事情处理了、就返回0退出
+	// 此次的事件循环、然后执行一些其它的事情、再次调用此函数继续检查事件信息
 	while(SDL_PollEvent(&event))
 	{
 		switch(event.type)
@@ -250,7 +269,7 @@ void gameEvent()
 	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 	glLoadIdentity();
 #endif
-
+	// 因为第二个参数为0、所以此处意思是背景表面使用BGCOLOR的色彩来填充
 	SDL_FillRect(screen,0,LEVEL->BGCOLOR);
 
 	PLAYER->update();
@@ -372,26 +391,43 @@ void died()
 void framerate()
 {
 #ifndef __unix__
+	    // 检测是否要显示帧率
    		if(NoFrameCheck)
 		{		
 			framecount++;
 			if(framecount>10)
 			{
+				// 这个函数返回当前高精确度性能计数器的时间值
 				QueryPerformanceCounter(&currentticks);
+				// 使用公式
+				// 所耗时间 = (开始时间点 - 结束时间点) / CPU时钟频率
+				// 这时的frame_multi其实就是每个循环所费的时间、由于下面已经设置了帧率限制
+				// 所以
   				frame_multi = (double)(currentticks.QuadPart-framedelay.QuadPart)/((double)(tickspersecond.QuadPart*10)/65);
 				framecount = 0;
 				delete[] FRAMECHAR;
 				FRAMECHAR = new char[10];
+				// 所谓的帧率就是指这个程序一秒钟刷新了多少次画面的次数、由于事件处理和
+				// 这个帧率计算是同时被调用的、所以只需要统计一下这个程序本身调用了几次便
+				// 可以得出帧率了
 				fps = (int)(65/frame_multi);
 				sprintf(FRAMECHAR,"%d FPS",fps);			
 				if (frame_multi <= 0)
 					frame_multi = 1;
+				// 把当前时间赋值给第一次获取的时间、作为下次计算时间的上次时间点
 				framedelay = currentticks;
 			}
 		}
 #endif
-
+	// 由于要一直调用stime、所以把stime设置为静态变量
+	// stime为开始时间、每次执行完毕后、便把当前时间存为开始时间
+	// 以供下一次循环时把现在所存的时间与将来的时间相减
   	static Uint32 stime = 0;	
+	// SDL_GetTicks()返回的是当前时间到初始化SDL所经过的时间数、
+	// 此处用于计算游戏的帧率
+	// 此处为设置游戏的帧率、因为SDL_GetTicks返回的是毫秒数、所以要
+	// 使游戏每秒刷新targetfps帧、就必须等待1000/targetfps秒、然后才执行
+	// 其它操作、这里假设游戏所执行的所有操作是瞬间进行的、因为真的狠快、
 	while(SDL_GetTicks() - stime < 1000/targetfps);
 	stime = SDL_GetTicks();
 	

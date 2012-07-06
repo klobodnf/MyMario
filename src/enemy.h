@@ -16,6 +16,8 @@ public:
 	void die();
 
 	virtual void add_update();
+	// headbang、也就是敌人被MARIO踩中了的意思、MARIO的特有动作、
+	// 此处是虚拟函数、具体的实现由具体的敌人类型来决定
 	virtual void headbang();
 	virtual void draw();
 

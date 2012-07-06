@@ -112,6 +112,7 @@ void cPlayer::movecam()
 
 void cPlayer::update()
 {
+	// 开启无敌模式
 	if(invincible)
 		invincible--;
 
@@ -120,6 +121,8 @@ void cPlayer::update()
 	
 	if(x>15500)
 		x = 15500;
+
+	// 设置死亡边界、超过4000就掛了
 	if(y > 4000)
 		this->die();
 
@@ -198,6 +201,7 @@ void cPlayer::update()
 	{
 		if(Aed==0&&JUMPcount==400&&down_touch)
 		{
+			// 这里跳跃的高度将会受到水平速度的影响
 			jumpheight = JUMPS+abs(x_speed*1.4);
 			PLAYSOUND0(S_JUMP);
 			JUMPcount = 0;
