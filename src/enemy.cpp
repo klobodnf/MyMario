@@ -37,6 +37,7 @@ void cEnemy::update()
 	if(DEATHcount>0)
 	{
 		DEATHcount++;
+		////////////////////////
 		if(DEATHcount>=2000)
 			dead=1;
 	}

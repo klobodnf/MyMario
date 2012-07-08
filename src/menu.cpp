@@ -11,6 +11,8 @@
 bool hideMenu;
 
 
+
+
 SDL_Surface *Menu_SURFACE[7],*ARROW_SURFACE,*LevelListBack;
 SDL_Rect Menu_RECT[6];
 int choice,frame_count,Levellistcount,levelchoice=0;
@@ -41,7 +43,7 @@ void initMenu()
 	Menu_SURFACE[5] = LoadIMG(DATADIR "gfx/menu/exit.png");
 	ARROW_SURFACE = LoadIMG(DATADIR "gfx/menu/arrow.png");
 	
-	PLAYER = new cPlayer(SDLK_a,SDLK_d,SDLK_w,SDLK_s,SDLK_q,SDLK_e,12);
+	PLAYER = new cPlayer(SDLK_a,SDLK_d,SDLK_w,SDLK_s,SDLK_j,SDLK_k,12);
 	gameStarted = 0;
 	choice = 100;
 	arrow_speed = 0;	
@@ -285,12 +287,15 @@ void MenuEvent()
 	keys = SDL_GetKeyState(NULL);
 
 
+	// 按上且处于菜单状态、则游标向上加速、加速到6、便保持最大速度了
 	if((keys[SDLK_UP])&&!levelMenu)
 	{
 		arrow_speed-=0.3;
 		if(arrow_speed<-6)
 			arrow_speed = -6;		
 	}
+
+	// 按下且处于菜单状态、则游标向下加速、加速到6、便保持最大速度了
 	if((keys[SDLK_DOWN])&&!levelMenu)
 	{
 		arrow_speed+=0.3;
@@ -477,6 +482,8 @@ void drawInGameStats()
 		if(HUDTEXT)
 			delete[] (HUDTEXT);
 		HUDTEXT = new char[70];
+		///////////////////////////////////
+		/// test_data
 		sprintf(HUDTEXT,"Source: %d    Coins : %d    Lift : %d Cheat_Enable: %d",HUD.score,HUD.coins,HUD.lifes,cheats_enabled);
 		hudSurf = TTF_RenderText_Blended(font, HUDTEXT,HUDColorbg);	
 		//hudSurf = TTF_RenderUTF8_Blended(font, "df",HUDColorbg);	

@@ -272,14 +272,19 @@ void gameEvent()
 	// 因为第二个参数为0、所以此处意思是背景表面使用BGCOLOR的色彩来填充
 	SDL_FillRect(screen,0,LEVEL->BGCOLOR);
 
+	// 不断的更新玩家事件
 	PLAYER->update();
 
+	// 不断的更新背景画面
 	LEVEL->drawBackground();
 
+	// 下面是刷新各种敌人和宝物
 	int i;
+	// 刷新食人花
 	for(i=0;i<KILLERBLUMEcount;i++)
 		KILLERBLUME[i]->update();
 
+	// 刷新奖励物品的状态、最大5个
 	for(i=0;i<5;i++)
 		BONUS_DYNAMIC[i]->update();
 
@@ -339,6 +344,7 @@ void gameEvent()
 		StringColor(screen,0,0,FRAMECHAR,14605935);
 #endif
 
+	// 按H或者F1键显示帮助菜单
 	if(keys[SDLK_h]||keys[SDLK_F1])
 	{
 		tmp_rect.x=WIDTH/2-125;
@@ -362,27 +368,33 @@ void gameEvent()
 
 void died()
 {
+	// 没命了、游戏结束
 	if(HUD.lifes<=1)
 	{
 		PLAYSOUND1(S_GAMEOVER);
 		gameStartedVirtual = 0;
 		showMenu();		
 	}
+	// 不然就清空屏幕然后重生
 	else
 	{
 		SDL_FillRect(screen,0,0);
 		StringColor(screen,300,230,"Reviving...",-6536532);
 		drawGLscreen();
 
+		// 等0.1秒
 		SDL_Delay(100);
 
 	//	cout<<" ACHTUNG ::::::::::: "<<LEVEL->nowlevel<<endl<<endl<<endl;
 
+		// 然后重开关卡
 		LEVEL->loadLevel(LEVEL->RESTARTLevel,0);
 		
 		HUD.lifes--;
 		PLAYER->invincible = 0;
 	}
+
+	// 不管怎么样、都要清空状态
 	PLAYER->dead = 0;
 	PLAYER->x_speed = 0;
 	PLAYER->y_speed = 0;
@@ -440,6 +452,7 @@ void exitos(void)
 {
 	// Write the Keys :
 
+	// 退出后、便要保存游戏设置状态
 	char szBuffer [MAX_PATH];
 	dictionary * d = iniparser_new("megamario.ini");
 	/* Create the megamario section (in case of an empty ini file) */

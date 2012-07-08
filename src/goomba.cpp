@@ -19,6 +19,7 @@ cGoomba::cGoomba(int x,int y) : cEnemy(x,y)
 {
 	W = GOOMBA_SURFACE[0]->w;
 	H = GOOMBA_SURFACE[0]->h;
+	// 设置踩死一个蘑菇头就加100分
 	scoring = 100;
 }
 
@@ -41,7 +42,7 @@ void cGoomba::headbang()
 	// 踩中蘑菇头后MARIO会向上弹起
 	PLAYER->y_speed=-10;
 	PLAYSOUND1(S_STOMP); 
-	// 然后加分
+	// 然后加分、并在原地坐标冒出100分的数字
 	SCORE->init(x,y,scoring);
 	// 然后蘑菇头会被踩出血来、囧
 	BLOOD_GENERATOR->newBlood(x,y);

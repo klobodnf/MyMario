@@ -112,7 +112,7 @@ void cPlayer::movecam()
 
 void cPlayer::update()
 {
-	// 开启无敌模式
+	// 开启无敌模式、然后便不断的减少时间
 	if(invincible)
 		invincible--;
 
@@ -297,12 +297,17 @@ void cPlayer::update()
 	rect.x = (int)x - cam_x;
 	rect.y = (int)y - cam_y;
 
+	// STARPOWER不仅仅是无敌标志、还是无敌时间、这个值由bonus.cpp那里赋予
+	// 当玩家吃到星星的时候、自动增加500个单位的时间
 	if(STARPOWER)
 	{
+		// 如果是6的整数倍、才刷新一新时间
 		if(STARPOWER%6 == 0)
+			// 显示倒计时的矩形、
 			GLIDDER->init(x/40,y/40 +1,0,-10);
 		
 		STARPOWER--;
+		// 如果吃了星星、那么星星时间就是无敌时间
 		invincible = STARPOWER;
 
 				
@@ -329,13 +334,19 @@ void cPlayer::update()
 		}
 	for(int i=0;i<KILLERBLUMEcount;i++)
 		if(!KILLERBLUME[i]->dead&& collision(&rect,&KILLERBLUME[i]->rect))
-		{			
+		{		
+			// 吃星星后、挡莪者死、
 			KILLERBLUME[i]->dead=1;
+			// 碰到食人花、会加分
 			SCORE->init(KILLERBLUME[i]->x,KILLERBLUME[i]->y,250);
+			// 出血
 			BLOOD_GENERATOR->newBlood(KILLERBLUME[i]->x,KILLERBLUME[i]->y);
 			PLAYSOUND2(S_KICK);			
 		}
 
+		// 只要STARPOWER还在、这个值就一直为0、也就是无敌时间还未结束
+		// 如果哪天STARTPOWER已经为0了、那么就自动跳到下面的else语句了
+		// 然后STARTPOWER_OVER就为0了
 		STARPOWER_OVER = 0;
 	}else{
 		if(!STARPOWER_OVER)
@@ -404,15 +415,20 @@ void cPlayer::MakeMyWalk()
 #define DELAYTIME 100
 void cPlayer::changeStat(int staty)
 {	
+	// 假如已经在无敌状态、则吃啥都不会改变MARIO的形态
 	if(STARPOWER)
 		return;
 
 	y-=40;
+
+	// 如果stat为0那么一定小于或等于staty、这样的话就长大成人
 	if(stat<=staty)
 	{
 		PLAYSOUND1(S_GROW);
 		invincible = 0;
 	}
+
+	// 否则的话、便是变小了、但是给MARIO他400秒的时间
 	else
 	{
 		invincible = 400;
@@ -420,6 +436,8 @@ void cPlayer::changeStat(int staty)
 	}
 
 	stat=staty;
+	// 判断MARIO是否已经长大了、如果stat为0则是小MARIO
+	// 否则的话、变成大MARIO
 	if(stat==0)
 	{
 		W = 38;
@@ -429,6 +447,8 @@ void cPlayer::changeStat(int staty)
 	{
 		W = 38;
 		H = 75;
+
+		// 长大的话就会搞点特效、不断的有星星冒出来
 		GLIDDER->init(this->x/40,this->y/40,5,3);
 		GLIDDER->init(this->x/40,this->y/40,0,0);
 		GLIDDER->init(this->x/40,this->y/40+1,0,0);

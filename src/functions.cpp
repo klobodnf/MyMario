@@ -670,7 +670,9 @@ void resetPlayer()
 	
 	int xa = PLAYER->x;int ya = PLAYER->y;
 	delete(PLAYER);
-	PLAYER = new cPlayer(SDLK_LEFT,SDLK_RIGHT,SDLK_UP,SDLK_DOWN,SDLK_LCTRL,SDLK_SPACE,8);
+	PLAYER = new cPlayer(SDLK_a,SDLK_d,SDLK_w,SDLK_s,SDLK_j,SDLK_k,12);
+
+	//PLAYER = new cPlayer(SDLK_LEFT,SDLK_RIGHT,SDLK_UP,SDLK_DOWN,SDLK_LCTRL,SDLK_SPACE,8);
 	PLAYER->x = xa;PLAYER->y = ya;
 	
 	playerinited=1;

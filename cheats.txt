@@ -1,0 +1,15 @@
+Ohoh, seems like you completed the game.
+
+Cheatmode is enabled.
+
+
+Cheats (Enter in Game):
+
+ big = mushroom
+ fire = firemario
+ small = smallmario
+ die = die
+
+
+Press 1 and 5 to fly!!! 
+Have a Lot Of Fun!

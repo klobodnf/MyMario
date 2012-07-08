@@ -494,6 +494,7 @@ void cScene::drawLevel()
 				SDL_UpperBlit(Bonus_Textures[(int)COINcount],0,screen,&tmp_rect);
 				if(collision(&tmp_rect,&PLAYER->rect))
 				{
+					// 金币碰撞后、就会把它设置为非金币砖块
 					COIN[i][n] = 0;
 					PLAYSOUND2(S_COIN);
 					HUD.coins++;
@@ -576,6 +577,7 @@ void scriptBonus(int x,int y)
 {
 	switch(LEVEL->BONUS[x][y])
 	{
+		// 如果砖块是可以顶碎的话
 		case 1://CRACKBOX
 			if(!LEVEL->Bonus_Kick_Mode&&!PLAYER->stat)
 			{
@@ -599,8 +601,10 @@ void scriptBonus(int x,int y)
 			}
 		break;
 	
+		// 如果是成长蘑菇
 		case 2://PILZ
 			bonus_activ = 20;
+			// 把砖块顶了之后就把砖块设置为空
 			LEVEL->BONUS[x][y] = BOXEMPTY;
 			kickUp(x,y);
 			for(i=0;i<5;i++)
@@ -650,6 +654,8 @@ void scriptBonus(int x,int y)
 			kickUp(x,y);
 			PLAYSOUND2(S_TOCK);
 		break;
+
+		// 如果是金币砖
 		case 16:
 			LEVEL->BONUS[x][y] = BOXEMPTY;	
 			PLAYSOUND2(S_COIN);

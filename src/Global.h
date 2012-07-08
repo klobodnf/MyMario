@@ -49,6 +49,9 @@ using std::ios;
 using std::find_if;
 #endif
 
+// test_deathcount
+extern int test_deathcount;
+
 //SDL's
 #include <SDL.h>
 #include <SDL_mixer.h>
@@ -69,6 +72,7 @@ using std::find_if;
 #include "enemy.h"
 #include "particle.h"
 #include "gamepad.h"
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //#define Use_OPENGL

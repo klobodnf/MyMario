@@ -18,6 +18,7 @@ cBonus::cBonus()
 
 	online = 0;
 }
+// _type决定奖励是什么、比如传个1过去、那就不会动了、狠明显这个奖励是花嘛
 void cBonus::init(int _x,int _y,int _type)
 {
 	x = _x*40;
@@ -76,24 +77,30 @@ void cBonus::update()
 
 		if(collision(&rect,&PLAYER->rect))
 		{
+			// 如果type是0、则是奖励一个蘑菇
 			if(type==0)
 				PLAYER->changeStat(1);
+			// 如果type是1、则是奖励一个花
 			else if(type==1)
 			{
+				// 如果已经吃了花了、只奖励一千分
 				if(PLAYER->stat==2)
 				{
 					SCORE->init(x,y,1000);
 					PLAYSOUND1(S_KICK);
 				}
+				// 否则则变成花
 				else
 					PLAYER->changeStat(2);
 			}
+			// type为2、就是吃到星星了
 			else if(type==2)
 			{
 				PLAYER->STARPOWER += 500;
 				if(nosound==2)
 					playMusic("star.mid");
 			}
+			// 吃到奖命了
 			else if(type==3)
 			{
 				PLAYSOUND1(S_1UP);

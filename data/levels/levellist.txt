@@ -1,24 +1,56 @@
 data/levels/old/lab/main
 !- The extreme MarioTestLab - Massacre -!
 data/levels/menulevel2
- !- The funky death Jump -!
+!- The funky death Jump -!
 data/levels/old/2/main
 !- The first level of the original SMB -!
 data/levels/old/1/main
 #- Nonsense -#
-data/levels/edit1/main
-Empty Level 1 - Ready for edit
-data/levels/edit2/main
-Empty Level 3 - Ready for edit
-data/levels/edit3/main
-Empty Level 4 - Ready for edit
-data/levels/edit4/main
-Empty Level 4 - Ready for edit
-data/levels/edit5/main
-Empty Level 5 - Ready for edit
-data/levels/old/1/main
- -
-data/levels/old/1/main
-All the Levels will be availabe 
-data/levels/old/1/main
-here after you complete the game.
+data/levels/1/main
+Lev. 1 - The Escape from the castle
+data/levels/2/main
+Lev. 2 - Getaway
+data/levels/3/main
+Lev. 3 - The story starts
+data/levels/4/main
+Lev. 4 - Gettin' higher
+data/levels/5/main
+Lev. 5 - First castle
+data/levels/6/main
+Lev. 6 - Crossed pipes
+data/levels/7/main
+Lev. 7 - What about stars ?
+data/levels/8/main
+Lev. 8 - Bullet Bill strikes back
+data/levels/9/main
+Lev. 9 - Castle 2 - Deep down below
+data/levels/10/main
+Lev. 10 - The Egypt hole 1
+data/levels/11/main
+Lev. 11 - The Hole 2
+data/levels/12/main
+Lev. 12 - Nice weather
+data/levels/13/main
+Lev. 13 - Castle 3 - Trapped
+data/levels/14/main
+Lev. 14 - A lovely canyon
+data/levels/15/main
+Lev. 15 - Fire in the Hole
+data/levels/16/main
+Lev. 16 - Maze
+data/levels/17/main
+Lev. 17 - Canyon Bowser Battle
+data/levels/18/main
+Lev. 18 - ?????????????????
+data/levels/19/main
+Lev. 19 - Castle 4 - Climb The Evil
+data/levels/20/main
+Lev. 20 - Elevator Attator
+data/levels/21/main
+Lev. 21 - Big World
+data/levels/22/main
+Lev. 22 - Bullet Bill
+data/levels/23/main
+Lev. 23 - Way to hell
+data/levels/24/main
+Lev. 24 - Final Castle - Power Battle

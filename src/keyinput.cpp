@@ -22,6 +22,7 @@ void keyInput(void)
 		showMenu();
 	}
 
+	/*
 	if(keys[SDLK_f])
 	{
 		delete [] cheatcode;
@@ -43,18 +44,20 @@ void keyInput(void)
 		keys[SDLK_r] = 0;
 	}
 
+	*/
 	// 1、 假如输入fir再输入e、那么会掉一个花出来奖励给玩家、如果再按
 	// 会再出现、最多只能出现5朵花
    // 2、假如输入了di再输入e、那么会自杀
 	// e就是执行的意思
-	if(keys[SDLK_e])
+	if(keys[SDLK_8])
 	{
 		if(cheats_enabled)
-		if(!strcmp(cheatcode,"fir"))
+		//if(!strcmp(cheatcode,"fir"))
 		{
-			keys[SDLK_e] = 0;
+			keys[SDLK_8] = 0;
 		
 			for(int i=0;i<5;i++)
+				// 同一时刻只准在屏幕中出现最多5个奖励物品
 				if(!BONUS_DYNAMIC[i]->online)
 				{
 					cheater = 1;
@@ -62,9 +65,30 @@ void keyInput(void)
 					break;
 				}
 		}
-		if(!strcmp(cheatcode,"di"))
-			PLAYER->die();
+		//if(!strcmp(cheatcode,"di"))
+			//PLAYER->die();
 	}
+
+	if(keys[SDLK_0])
+	{
+		if(cheats_enabled)
+		//if(!strcmp(cheatcode,"fir"))
+		{
+			keys[SDLK_0] = 0;
+		
+			for(int i=0;i<5;i++)
+				// 同一时刻只准在屏幕中出现最多5个奖励物品
+				if(!BONUS_DYNAMIC[i]->online)
+				{
+					cheater = 1;
+					BONUS_DYNAMIC[i]->init(PLAYER->x/40,(PLAYER->y-80)/40,2);
+					break;
+				}
+		}
+		//if(!strcmp(cheatcode,"di"))
+			//PLAYER->die();
+	}
+	/*
 	else
 	if(keys[SDLK_b])
 	{
@@ -74,13 +98,14 @@ void keyInput(void)
 		strcpy(cheatcode,"b");		
 		keys[SDLK_b] = 0;
 	}
+	*/
 
 	// 如果输入了bi再输入g、就长出蘑菇、和前面长出花是一样道理的
-	if(keys[SDLK_g])
+	if(keys[SDLK_9])
 	{
 	if(cheats_enabled)
-		if(!strcmp(cheatcode,"bi"))
-		{	keys[SDLK_g] = 0;
+		//if(!strcmp(cheatcode,"bi"))
+		{	keys[SDLK_9] = 0;
 			for(int i=0;i<5;i++)
 				if(!BONUS_DYNAMIC[i]->online)
 				{
@@ -90,6 +115,7 @@ void keyInput(void)
 				}
 		}
 	}
+	/*
 	else
 	if(keys[SDLK_d])
 	{
@@ -109,11 +135,12 @@ void keyInput(void)
 		keys[SDLK_s] = 0;
 	}
 
+	*/
 	// 先输入s再输入l可以实现超级跳
 	if(keys[SDLK_l])
 	{
 	if(cheats_enabled)
-		if(!strcmp(cheatcode,"s"))
+		//if(!strcmp(cheatcode,"s"))
 			PLAYER->changeStat(0);
 	}
 	if(keys[SDLK_p])
@@ -124,7 +151,7 @@ void keyInput(void)
 
 	// 如果同时输入5和1、MARIO会飞
 	if(cheats_enabled)
-	if(keys[SDLK_5]&&keys[SDLK_1])
+	if(keys[SDLK_i])
 	{
 		cheater = 1;
 		PLAYER->y_speed = -5;
