@@ -25,8 +25,10 @@ cBrett::cBrett(int _x,int _y)
 void cBrett::update()
 {
 	if(count >= 100&&dir)
+		// dir为0就是向左走
 		dir = 0;
 	else if(count <= 0&&!dir)
+		// dir为1就是向右走
 		dir = 1;
 
 	if(dir)

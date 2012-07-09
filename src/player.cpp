@@ -62,10 +62,19 @@ cPlayer::cPlayer(int LEFT,int RIGHT,int UP,int DOWN,int B,int A,int _speed_jump_
 	K_B = B;
 	K_A = A;
 
+	// 刚开始、无敌时间就设置为关闭、也就是1
 	STARPOWER_OVER = 1;
 
+   // 所谓的walkcount就是动画帧、在这里
+	// 0代表站立动画
+	// 1代表小步行走动画
+	// 2代表大步行走动画
+	// 3代表蹲下动画
 	walkcount = 0;
 	walkcount2 = 0;
+
+	// 这里的walkadd代表walkcount的趋势、可能是正数也可以是负数、
+	// 以此来决定人物下一个动画是大步行走还是站立
 	walkadd = 1;
 	
 	y_speed = 0;
@@ -167,6 +176,8 @@ void cPlayer::update()
 	}
 	else
 	{
+		// 如果没碰到地面、则MARIO的所在高度会随垂直速度而变化
+		// 但总会不断的下降、这里是模拟重力、直到碰到地面了
 		if(!top_touch)
 		{
 			y += y_speed;
@@ -182,6 +193,7 @@ void cPlayer::update()
 		if(!Bed&&stat==2)///////NEW FIREBALL!!!!!!!!!!!!!
 		{
 			#define FIRESPEED 3
+			// 方向向右、则火球的速度方向向右、否则向左
 			if(dir) 
 			{
 				if(!FIREBALL[0]->init(x,y+35,FIRESPEED))
@@ -229,6 +241,8 @@ void cPlayer::update()
 
 	if(keys[K_DOWN]||Gamepad->down)
 	{
+		// 如果尙未蹲下、则执行、
+		// 人物高度下降、并且把动画帧指向3、也就是蹲下的动画
 		if(!KeyDown_down)
 		{
 			y+=H-34;
@@ -240,9 +254,12 @@ void cPlayer::update()
 	}
 	else
 	{
+		// 如果玩家已经释放了蹲下键、则人物高度恢复、重新站起来
 		if(KeyDown_down)
 		{
 			walkcount = 0;
+			// 这里还需要检查一下MARIO的状态、是否为小MARIO、如果是
+			// 高度不变、因为小MARIO的高度本来就等于大MARIO蹲下的高度
 			H = (stat==0) ? 42 : 75;
 			y-=H-34;
 			KeyDown_down = 0;
@@ -250,12 +267,14 @@ void cPlayer::update()
 	}	
 	if((keys[K_LEFT]||Gamepad->left)&&!KeyDown_down)
 	{		
+		// 设置方向向左、和速度
 		x_speed -= 0.2;
 		dir = 0;
 		MakeMyWalk();
 	}
 	else if((keys[K_RIGHT]||Gamepad->right)&&!KeyDown_down)
 	{		
+		// 设置方向向右
 		x_speed += 0.2;
 		dir = 1;
 		MakeMyWalk();
@@ -274,6 +293,7 @@ void cPlayer::update()
 				x_speed-=0.05;
 				if(!keys[K_DOWN]&&!Gamepad->down)MakeMyWalk();
 			}
+			// 只要MARIO不是蹲下的状态、就站立
 			else if(walkcount!=3)walkcount=0;
 	}
 
@@ -402,12 +422,15 @@ void cPlayer::MakeMyWalk()
 		walkcount2++;
 		if(walkcount2 >= 10 - (int)(abs((int)x_speed)))
 		{
+			// 如果人物是在大步跑的话、就恢复正常步伐
 			if(walkcount==2)
 				walkadd = -1;
 			else
+				// 如果人物是在站立的话、就恢复正常步伐
 				if(walkcount ==  0)
 					walkadd = 1;
 
+			// 这里为的就是使MARIO恢复正常步伐
 			walkcount+=walkadd;
 			walkcount2=0;
 		}
@@ -483,6 +506,7 @@ void cPlayer::draw()
 
 	if(down_touch)
 	{
+		// 如果方向向右时渲染右边的图案
 		if(dir)
 		{
 			SDL_UpperBlit(Surface_R[stat][walkcount],0,screen,&rect);

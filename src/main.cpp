@@ -214,6 +214,7 @@ void setGame()
 	
 	BLOOD_GENERATOR = new cBlood();
 
+	// 作弊码、经莪修改后已经屏蔽掉了
 	cheatcode = new char[10];
 	
 	font = TTF_OpenFont (DATADIR "style.TTF",26);
